@@ -32,3 +32,18 @@ margin: 40px;
   /* background-color: rgb(5, 146, 182); */
   opacity: 80%;
 }
+
+main form{
+display: none;
+}
+
+#scores{
+  display: flex;
+  list-style: none;
+  
+}
+
+#scores li{
+color: black;
+background-color: antiquewhite;
+}

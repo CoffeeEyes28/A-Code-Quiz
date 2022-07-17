@@ -1,3 +1,4 @@
+// index js
 // variables 
 var headerEl = document.querySelector("header")
 var viewScoreEl = document.getElementById("viewscores");
@@ -12,7 +13,20 @@ var l3El = document.getElementById("choice3")
 var l4El = document.getElementById("choice4")
 var answer = document.getElementsByClassName("answer")
 var statusEl = document.getElementById("answerstatus")
+var form = document.getElementById("form")
+var textBox = document.getElementById("textbox")
 
+
+
+
+
+
+
+    
+
+
+
+// event listen
 
 
   // questions
@@ -105,6 +119,7 @@ function startTimer(){
             timerEl.textContent = "Timer: " + timeLeft;
             timeLeft--;
         }else{
+            endGame();
             timerEl.textContent = "Timer: " + 0; 
             clearInterval(timerInterval);
         }
@@ -136,22 +151,24 @@ function createQuestion(){
 
 // end quiz
 function endGame(){
-  
+  var finalScore = localStorage.setItem("score", timeLeft)
   choicesEl.style.display = "none";
   statusEl.style.display = "none";
+  form.style.display = "flex";
   
   mainTextEl.textContent = "Thanks for playing!"
-  score = document.createElement("div")
+
+
+  score = document.createElement("h3")
   mainTextEl.appendChild(score)
-  score.textContent = "Final Score: " + timeLeft
-  userName = document.createElement("div")
-  input = document.createElement("input", "type", "text-box")
+  score.textContent = "Final Score: " + localStorage.getItem("score")
+
+  userName = document.createElement("h4")
   score.appendChild(userName)
   userName.textContent = "Enter your name:"
-  userName.appendChild(input)
-  submit = document.createElement("button")
-  submit.textContent = "Submit"
-  userName.appendChild(submit);
+ 
+
+  
   
 }
 
@@ -187,7 +204,6 @@ function checkAnswer(answer){
 
 
 
-
 // event listeners 
 
 // start button
@@ -213,7 +229,18 @@ l4El.addEventListener("click", function(){
   checkAnswer('choice4');
 });
 
-
+form.addEventListener("submit", function(event){
+  // event.preventDefault();
+  var formText = textBox.value.trim();
+  if (formText.length == 0){
+    alert("Please enter a username!")
+    event.preventDefault();
+  }else{
+    localStorage.setItem("name", formText)
+    event.preventDefault();
+    sendScore();
+  }
+})
 
 // run the quiz
 function startQuiz(){
@@ -224,5 +251,12 @@ function startQuiz(){
 
 
 
-
-
+function sendScore(){
+  userscore = localStorage.getItem("name") + "-" + localStorage.getItem("score")
+  window.location.href = "highscores.html"
+  
+  var boardEntry = document.createElement("li")
+  boardEntry.textContent = userscore
+  scoreEl.appendChild(boardEntry)
+  
+  }
