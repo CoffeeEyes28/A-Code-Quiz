@@ -57,8 +57,14 @@ main h2{
 }
 
 main p {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  border: 2px solid #9D00FF;
+  padding: 10px;
   text-align: center;
-margin: 40px;
+  width: 50%;
+
 }
 
 main h3{
