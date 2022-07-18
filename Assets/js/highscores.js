@@ -7,6 +7,9 @@ var scoreEl = document.getElementById("scores")
 var userscore = localStorage.getItem("name") + " - " + localStorage.getItem("score")
 var leaderboard = [];
 
+
+
+
 // textcontent
 highscoresEl.textContent = "Highscores";
 goBackEl.textContent = "Go Back";
@@ -18,18 +21,32 @@ goBackEl.addEventListener("click", function(){
 });
 
 clearEl.addEventListener("click", function(){
-    scoreEl.textContent = "";
+    scoreEl.style.display = "none";
     localStorage.clear();
 })
 
 function renderScores(){
-  
+ leaderboard = [];
+  leaderboard.push(userscore)
+    
+   for(i=0; i < leaderboard.length; i++){
+    
+    entry = leaderboard[i]
     var boardEntry = document.createElement("li")
-    boardEntry.textContent = userscore
-    scoreEl.appendChild(boardEntry)
+    boardEntry.textContent =  entry
+    scoreEl.appendChild(boardEntry) 
+    console.log(leaderboard)
+   }
+  
+
+    // var boardEntry = document.createElement("li")
+    // boardEntry.textContent =  userscore
+    // scoreEl.appendChild(boardEntry) 
     
-    
-   
+  
+  
+
+  // console.log(leaderboard)
 }
 
 renderScores();

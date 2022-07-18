@@ -87,7 +87,7 @@ var textBox = document.getElementById("textbox")
 viewScoreEl.textContent = "View Highscores";
 timerEl.textContent = "Timer: 0";
 mainTextEl.textContent = "Coding Quiz Challenge!"
-paraEl.textContent = "Press the start button to begin the quiz. The timer will start right away, and your time left will be your final score. Be careful! Every wrong answer will reduce 10 seconds from the timer and your final score. Good luck and have fun!!"
+paraEl.textContent = "Press the start button to begin the quiz. The timer will start right away, and your time left will be your final score. Be careful! Every wrong answer will reduce 10 seconds from the timer and your overall final score. Good luck and have fun!!"
 buttonEl.textContent = "Start!";
 
 
@@ -97,11 +97,9 @@ buttonEl.textContent = "Start!";
 // style
 headerEl.style.fontSize = "10px";
 timerEl.style.cssFloat = "right";
-mainTextEl.style.fontSize = "40px";
-buttonEl.style.color = "white";
-buttonEl.style.backgroundColor = "purple";
-buttonEl.style.width = "80px";
-buttonEl.style.height = "30px";
+mainTextEl.style.fontSize = "45px";
+
+
 
 // time var
 var timeLeft = 80;
@@ -166,6 +164,8 @@ function endGame(){
   userName = document.createElement("h4")
   score.appendChild(userName)
   userName.textContent = "Enter your name:"
+mainTextEl.appendChild(form)
+ 
  
 
   
@@ -254,9 +254,7 @@ function startQuiz(){
 function sendScore(){
   userscore = localStorage.getItem("name") + "-" + localStorage.getItem("score")
   window.location.href = "highscores.html"
-  
-  var boardEntry = document.createElement("li")
-  boardEntry.textContent = userscore
-  scoreEl.appendChild(boardEntry)
+
+
   
   }
