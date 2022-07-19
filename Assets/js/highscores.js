@@ -10,12 +10,18 @@ var names = localStorage.getItem("name")
 
 var scores = localStorage.getItem("score")
 
-var namesArray = [names] 
-var scoresArray = [scores]
-console.log(namesArray)
+// var namesArray = [names] 
+// var scoresArray = [scores]
+// console.log(namesArray)
 
-entry = userscore
+// entry = userscore
 
+var userInfo = {
+  name: names,
+  score: scores
+}
+
+console.log(userInfo.name)
 
 
 // textcontent
@@ -34,28 +40,18 @@ clearEl.addEventListener("click", function(){
 })
 
 function renderScores(){
- 
-  // leaderboard.push(userscore)
+  var userPrint = "";
+  for(var x in userInfo){
+    userPrint = userInfo.name + "-" + userInfo.score;
     
-  //  for(i=0; i < holdMe.length; i++){
-    // entry = userscore
-    
-    var boardEntry = document.createElement("li")
-    boardEntry.textContent =  entry
-    scoreEl.appendChild(boardEntry) 
-   
+   }
+   var boardEntry = document.createElement("li")
+   boardEntry.textContent = userPrint
+   scoreEl.appendChild(boardEntry) 
    
   
-
-    // var boardEntry = document.createElement("li")
-    // boardEntry.textContent =  userscore
-    // scoreEl.appendChild(boardEntry) 
-    
-  
-  
-
-  // console.log(leaderboard)
 }
+
 
 renderScores();
 
