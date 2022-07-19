@@ -16,19 +16,6 @@ var statusEl = document.getElementById("answerstatus")
 var form = document.getElementById("form")
 var textBox = document.getElementById("textbox")
 
-
-
-
-
-
-
-    
-
-
-
-// event listen
-
-
   // questions
   var questions = [
     {
@@ -106,6 +93,7 @@ var timeLeft = 80;
 var timeTaken = 10;
 var timerInterval;
 var quizEnd = false
+
 // timer function 
 function startTimer(){
     quizEnd = false
@@ -235,8 +223,8 @@ l4El.addEventListener("click", function(){
   checkAnswer('choice4');
 });
 
+// form submit 
 form.addEventListener("submit", function(event){
-  // event.preventDefault();
   var formText = textBox.value.trim();
   if (formText.length == 0){
     alert("Please enter a username!")
@@ -256,7 +244,7 @@ function startQuiz(){
 };
 
 
-
+// runs pushscore fun and takes user to highscores html page
 function sendScore(){
 
   pushScore();
@@ -269,7 +257,7 @@ function sendScore(){
 
 
 
-
+// pushes user name and score into an obj array in localstorage
 function pushScore(){
 
   var currentScore = JSON.parse(localStorage.getItem("allScores"));
