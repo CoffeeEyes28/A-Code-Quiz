@@ -125,7 +125,7 @@ function startTimer(){
         if (quizEnd === true){
           timerEl.textContent = "Timer: " + localStorage.getItem("score")
           clearInterval(timerInterval)
-          console.log(quizEnd)
+          
         }
     }, 1000);
     
@@ -258,9 +258,33 @@ function startQuiz(){
 
 
 function sendScore(){
-  userscore = localStorage.getItem("name") + "-" + localStorage.getItem("score")
+
+  pushScore();
   window.location.href = "highscores.html"
-
-
   
+
+}
+
+
+
+
+
+
+function pushScore(){
+
+  var currentScore = JSON.parse(localStorage.getItem("allScores"));
+
+  if(currentScore === null) currentScore = [];
+  var names = localStorage.getItem("name")
+  var scores = localStorage.getItem("score")
+  var aScore = {
+    username: names,
+    userscore: scores
   }
+localStorage.setItem("aScore", JSON.stringify(aScore))
+  
+currentScore.push(aScore)
+localStorage.setItem("allScores", JSON.stringify(currentScore))
+
+}
+
