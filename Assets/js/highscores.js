@@ -5,8 +5,16 @@ var goBackEl = document.getElementById("goback");
 var clearEl = document.getElementById("clear");
 var scoreEl = document.getElementById("scores")
 var userscore = localStorage.getItem("name") + " - " + localStorage.getItem("score")
-var leaderboard = [];
 
+var names = localStorage.getItem("name")
+
+var scores = localStorage.getItem("score")
+
+var namesArray = [names] 
+var scoresArray = [scores]
+console.log(namesArray)
+
+entry = userscore
 
 
 
@@ -26,17 +34,17 @@ clearEl.addEventListener("click", function(){
 })
 
 function renderScores(){
- leaderboard = [];
-  leaderboard.push(userscore)
+ 
+  // leaderboard.push(userscore)
     
-   for(i=0; i < leaderboard.length; i++){
+  //  for(i=0; i < holdMe.length; i++){
+    // entry = userscore
     
-    entry = leaderboard[i]
     var boardEntry = document.createElement("li")
     boardEntry.textContent =  entry
     scoreEl.appendChild(boardEntry) 
-    console.log(leaderboard)
-   }
+   
+   
   
 
     // var boardEntry = document.createElement("li")

@@ -105,10 +105,10 @@ mainTextEl.style.fontSize = "45px";
 var timeLeft = 80;
 var timeTaken = 10;
 var timerInterval;
-
+var quizEnd = false
 // timer function 
 function startTimer(){
-    
+    quizEnd = false
     var timerInterval = setInterval(function(){
         if (timeLeft > 1){
             timerEl.textContent = "Timer: " + timeLeft;
@@ -122,6 +122,11 @@ function startTimer(){
             clearInterval(timerInterval);
         }
         localStorage.setItem("time", timeLeft)
+        if (quizEnd === true){
+          timerEl.textContent = "Timer: " + localStorage.getItem("score")
+          clearInterval(timerInterval)
+          console.log(quizEnd)
+        }
     }, 1000);
     
 }
@@ -149,6 +154,7 @@ function createQuestion(){
 
 // end quiz
 function endGame(){
+  quizEnd = true
   var finalScore = localStorage.setItem("score", timeLeft)
   choicesEl.style.display = "none";
   statusEl.style.display = "none";
